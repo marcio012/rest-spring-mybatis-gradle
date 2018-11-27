@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="website.marcioheleno.restspringmybatisgradle.mapper.TopicMapper">
+    <select id="getTopicList" resultType="Topic">
+		SELECT	*
+		FROM	topic
+	</select>
+
+    <select id="getTopicInfo" resultType="Topic" parameterType="int">
+		SELECT	*
+		FROM	topic
+		WHERE	topic_no = #{topicNo }
+	</select>
+
+    <insert id="addTopicInfo" parameterType="Topic">
+		INSERT
+		INTO	topic
+		(		topic_title
+		,		topic_content
+		)
+		VALUES
+		(		#{topicTitle }
+		,		#{topicContent }
+		)
+	</insert>
+
+    <update id="setTopicInfo" parameterType="Topic">
+		UPDATE	topic
+		SET		topic_title = #{topicTitle }
+		,		topic_content = #{topicContent }
+		WHERE	topic_no = #{topicNo }
+	</update>
+
+    <delete id="deleteTopicInfo" parameterType="int">
+		DELETE
+		FROM	topic
+		WHERE	topic_no = #{topicNo }
+	</delete>
+
+</mapper>
